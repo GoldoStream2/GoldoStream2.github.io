@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<link rel="icon" href="GoldoStream1.png" type="image/x-icon">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2e2e2e;
+            color: #fff;
+            overflow: hidden;
+            /* Pour éviter la barre de défilement horizontale */
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 100px;
+            padding: 20px;
+            user-select: none; /* Empêche la sélection de texte */
+        }
+
+        #content h1 {
+            font-size: 36px;
+        }
+
+        #content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #content a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        #content a:hover {
+            color: #ccc;
+        }
+
+        #menu {
+            background-color: rgba(51, 51, 51, 0.8);
+            /* Ajout d'un fond semi-transparent */
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -200px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding-top: 60px;
+            user-select: none; /* Empêche la sélection de texte */
+        }
+
+        #menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #menu ul li {
+            padding: 10px;
+            border-bottom: 1px solid #666;
+        }
+
+        #menu ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #menu ul li a:hover {
+            color: #ccc;
+        }
+
+        #menu.active {
+            left: 0;
+        }
+
+        /* Modification de la taille de l'icône du menu et ajout d'un rectangle semi-transparent */
+        #menu-toggle {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            cursor: pointer;
+            z-index: 1001;
+            font-size: 20px;
+            /* Ajustez cette valeur pour changer la taille de l'icône */
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            /* Ajustez cette valeur pour changer la taille du rectangle */
+            border-radius: 5px;
+            user-select: none; /* Empêche la sélection de texte */
+        }
+
+
+        /* Nouveau style pour l'interface en bas */
+        #bottom-interface {
+            position: fixed;
+            bottom: 60px;
+            /* Réglage de la position verticale */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Réglage de la transparence */
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+
+        #bottom-interface button {
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Réglage de la transparence */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #bottom-interface button:hover {
+            background-color: rgba(224, 213, 213, 0.733);
+            /* Réglage de la transparence */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Chargement du menu latéral -->
+    <div id="menu">
+        <!-- Le contenu du menu sera chargé ici -->
+    </div>
+    <div id="menu-toggle">☰</div>
+
+    <!-- Contenu de la page "Informations" -->
+    <div id="content">
+        <h1>Bienvenue sur notre site de streaming</h1>
+        <p>Découvrez ici les derniers films et les classiques.</p>
+        <p>2024 Informations. Tous droits réservés.</p>
+        <p>Pour éviter les publicités, nous vous recommandons de télécharger l'extension <a
+                href="https://ublockorigin.com/" target="_blank">uBlock Origin</a>.</p>
+    </div>
+
+    <!-- Interface en bas -->
+    <div id="bottom-interface">
+        <button onclick="window.open('https://guns.lol/GoldoStream', '_blank')">Réseaux</button>
+    </div>
+
+    <!-- Script de fond de constellations -->
+    <script>
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        var stars = [];
+        var numStars = 300;
+        var maxDistance = 100;
+        var mousePos = { x: 0, y: 0 };
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.zIndex = '-1';
+
+        document.body.appendChild(canvas);
+
+        for (var i = 0; i < numStars; i++) {
+            var x = Math.random() * canvas.width;
+            var y = Math.random() * canvas.height;
+            var speedX = (Math.random() - 1.0) * 1.0;
+            var speedY = (Math.random() - 1.0) * 1.0;
+            stars.push({ x: x, y: y, speedX: speedX, speedY: speedY });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (var i = 0; i < numStars; i++) {
+                var star = stars[i];
+                star.x += star.speedX;
+                star.y += star.speedY;
+
+                if (star.x < 0 || star.x > canvas.width) star.speedX = -star.speedX;
+                if (star.y < 0 || star.y > canvas.height) star.speedY = -star.speedY;
+
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, 2, 0, Math.PI * 2);
+                ctx.fillStyle = "#ffffff";
+                ctx.fill();
+
+                for (var j = i + 1; j < numStars; j++) {
+                    var otherStar = stars[j];
+                    var dx = otherStar.x - star.x;
+                    var dy = otherStar.y - star.y;
+                    var distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(star.x, star.y);
+                        ctx.lineTo(otherStar.x, otherStar.y);
+                        ctx.strokeStyle = "rgba(255, 255, 255, " + (1 - distance / maxDistance) + ")";
+                        ctx.stroke();
+                    }
+                }
+
+                var dx = mousePos.x - star.x;
+                var dy = mousePos.y - star.y;
+                var distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < maxDistance) {
+                    ctx.beginPath();
+                    ctx.moveTo(star.x, star.y);
+                    ctx.lineTo(mousePos.x, mousePos.y);
+                    ctx.strokeStyle = "rgba(255, 255, 255, " + (1 - distance / maxDistance) + ")";
+                    ctx.stroke();
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        document.addEventListener('mousemove', function (e) {
+            mousePos.x = e.clientX;
+            mousePos.y = e.clientY;
+        });
+    </script>
+
+    <script>
+        var menuToggle = document.getElementById('menu-toggle');
+        var menu = document.getElementById('menu');
+
+        // Chargement du contenu du menu depuis menu.html
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                menu.innerHTML = data;
+                var links = menu.querySelectorAll('a');
+
+                links.forEach(function (link) {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        menu.classList.remove('active');
+                        window.top.location.href = e.target.href;
+                    });
+                });
+            })
+            .catch(error => {
+                console.error('Une erreur s\'est produite lors du chargement du menu:', error);
+            });
+
+        menuToggle.addEventListener('click', function () {
+            menu.classList.toggle('active');
+        });
+
+        // Ferme le menu lorsque l'utilisateur clique en dehors du menu
+        document.addEventListener('click', function (e) {
+            if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

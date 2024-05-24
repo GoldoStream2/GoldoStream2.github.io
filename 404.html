@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page d'erreur</title>
+  <!-- Ajout de la police Monoton depuis Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monoton&display=swap">
+  <style>
+    body {
+      background-color: #111111;
+    }
+    .board {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 150px;
+      width: 500px;
+      margin: -75px 0 0 -250px;
+      padding: 20px;
+      font: 75px/75px Monoton, cursive;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: 0 0 80px red, 0 0 30px FireBrick, 0 0 6px DarkRed;
+      color: red;
+    }
+    #error {
+      color: #fff;
+      text-shadow: 0 0 80px #ffffff, 0 0 30px #008000, 0 0 6px #0000ff;
+    }
+    .novacancy.on {
+      color: #ffffff;
+      text-shadow: 0 0 80px #ffffff, 0 0 30px #008000, 0 0 6px #0000ff;
+    }
+    .novacancy.off {
+      color: red;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+  <div class="board">
+    <p id="error">error</p>
+    <p id="code">404</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    (function($) {
+      'use strict';
+      var settingsError = {
+        reblinkProbability: 0.1,
+        blinkMin: 0.2,
+        blinkMax: 0.6,
+        loopMin: 8,
+        loopMax: 10,
+        color: '#ffffff',
+        glow: ['0 0 80px #ffffff', '0 0 30px #008000', '0 0 6px #0000ff']
+      };
+
+      var settingsCode = {
+        blink: 1,
+        off: 1,
+        color: 'Red',
+        glow: ['0 0 80px Red', '0 0 30px FireBrick', '0 0 6px DarkRed']
+      };
+
+      $.fn.novacancy = function(options) {
+        return this.each(function() {
+          new Novacancy(this, options);
+        });
+      };
+
+      function Novacancy(element, options) {
+        this._el = $(element);
+        if (this.repeat()) return true;
+        this._settings = options;
+        this._powerOn = false;
+        this._loopTimeout = 0;
+        this._el.html(this.buildHTML());
+        this._items = this._el.find("span.novacancy");
+        this._blinkArr = this.arrayMake();
+        this.bindEvent();
+        this.writeCSS();
+        if (this._settings.autoOn) this.blinkOn();
+      }
+
+      Novacancy.prototype.repeat = function() {
+        var el = this._el;
+        if (el[0].novacancy) {
+          return true;
+        } else {
+          el[0].novacancy = true;
+          return false;
+        }
+      };
+
+      Novacancy.prototype.writeCSS = function() {
+        var style = this.css();
+        var css = $("<style>" + style + "</style>");
+        $("body").append(css);
+      };
+
+      Novacancy.prototype.selector = function() {
+        var el = this._el;
+        var tag = el[0].tagName;
+        if (el[0].id) tag += "#" + el[0].id;
+        if (el[0].className) tag += "." + el[0].className;
+        return tag;
+      };
+
+      Novacancy.prototype.css = function() {
+        var selector = this.selector();
+        var settings = this._settings;
+        var glow = "text-shadow: " + settings.glow.toString() + ";";
+        var color = "color: " + settings.color + ";" + glow;
+        var offColor = "color: " + settings.color + "; opacity: 0.3;";
+        var css = "";
+        css += selector + " .novacancy.on { " + color + " }" + "\n";
+        css += selector + " .novacancy.off { " + offColor + " }" + "\n";
+        return css;
+      };
+
+      Novacancy.prototype.rand = function(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      };
+
+      // Rest of the methods go here...
+
+      var errorElement = $('#error').novacancy(settingsError);
+      var codeElement = $('#code').novacancy(settingsCode);
+
+    })(jQuery);
+  </script>
+</body>
+</html>

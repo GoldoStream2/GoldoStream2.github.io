@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GoldoStaff</title>
+<style>
+/* Styles for rounded buttons */
+input[type="button"] {
+  border-radius: 20px;
+  padding: 6px 12px;
+  background-color: #444;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin: 3px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover {
+  background-color: #333;
+}
+
+form {
+  margin-top: 20px;
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Styling for text inputs */
+input[type="text"] {
+  padding: 6px;
+  border-radius: 20px;
+  border: 2px solid #777;
+  margin: 3px;
+  width: calc(100% - 40px);
+}
+
+/* Container for buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+/* Styling for selection buttons */
+.selection-button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.selection-button:hover {
+  background-color: #444;
+}
+
+</style>
+<script type="text/javascript">
+function createButtons(buttonData, callback, containerClass) {
+    var container = document.createElement('div');
+    container.className = containerClass;
+    buttonData.forEach(function(data) {
+        var button = document.createElement('input');
+        button.type = 'button';
+        button.value = data;
+        button.className = 'selection-button';
+        button.onclick = function() { callback(data); };
+        container.appendChild(button);
+    });
+    return container;
+}
+
+function CopyToClipboard() {
+    var userID, duration, reason, output;
+    userID = document.myForm.userID.value;
+    duration = document.myForm.duration.value;
+    reason = document.myForm.reason.value;
+    
+    // Formatting the ID
+    userID = "<@" + userID + ">";
+    
+    output = "-tempmute " + userID + " " + duration + " " + reason;
+    
+    // Copy the text to the clipboard
+    navigator.clipboard.writeText(output);
+    
+    // Change the button color to green
+    document.getElementById("submitButton").style.backgroundColor = "#4CAF50";
+    
+    // Restore the button color after 1 second
+    window.setTimeout(function() {
+        document.getElementById("submitButton").style.backgroundColor = "#4CAF50";
+    }, 1000);
+    
+    // Clear the text area containing the ID
+    document.myForm.userID.value = "";
+}
+
+function redirectToLink() {
+    var url = "https://guns.lol/GoldoStream";
+    window.open(url, '_blank');
+}
+
+window.onload = function() {
+    var form = document.myForm;
+    
+    var durationData = ['10m', '20m', '30m'];
+    var durationButtons = createButtons(durationData, function(duration) {
+        form.duration.value = duration;
+    }, 'button-container');
+    form.insertBefore(durationButtons, form.duration);
+    
+    var reasonData = ['Insulte', 'Troll', 'SB', 'DC', 'Racism', 'Spam']; // Added 'Racism' and 'Spam'
+    var reasonButtons = createButtons(reasonData, function(reason) {
+        form.reason.value = reason;
+        // Set duration based on reason
+        switch(reason) {
+            case 'Insulte':
+                form.duration.value = '15m';
+                break;
+            case 'Troll':
+                form.duration.value = '10m';
+                break;
+            case 'SB':
+                form.duration.value = '35m';
+                break;
+            case 'DC':
+                form.duration.value = '45m';
+                break;
+            case 'Racism':
+                form.duration.value = '35m';
+                break;
+            case 'Spam':
+                form.duration.value = '15m';
+                break;
+            default:
+                form.duration.value = ''; // Reset duration for other reasons
+        }
+    }, 'button-container');
+    form.insertBefore(reasonButtons, form.reason);
+};
+</script>
+</head>
+<body>
+<form name="myForm">
+ID: <input type="text" name="userID"><br>
+Mute duration: <input type="text" name="duration"><br>
+Reason: <input type="text" name="reason"><br>
+<div class="button-container">
+<input id="submitButton" type="button" value="Submit" onclick="CopyToClipboard()">
+<input type="button" value="Redirect" onclick="redirectToLink()">
+</div>
+</form>
+</body>
+</html>
