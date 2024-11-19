@@ -1,33 +1,38 @@
-<html><head><base href="https://PourSofianeCacaLol.com">
-    <style>
+<html><head><base href="https://PourSofianeCacaLol.com"><style>
+    :root {
+      --primary: #00eaff;
+      --secondary: #202020;
+      --accent: #64ffda;
+      --bg: #0f0f0f;
+      --text: #ffffff;
+    }
+    
     @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-    
-    @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 20px rgba(82, 190, 255, 0.3); }
-      50% { box-shadow: 0 0 30px rgba(82, 190, 255, 0.5); }
+    @keyframes subtleGlow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 234, 255, 0.1);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(0, 234, 255, 0.2);
+      }
     }
     
     body {
       margin: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(-45deg, #1a1a2e, #16213e, #1a1a2e, #0f3460);
-      background-size: 400% 400%;
-      animation: gradientFlow 15s ease infinite;
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
       overflow-x: hidden;
     }
     
@@ -37,83 +42,100 @@
       padding: 2rem;
     }
     
-    .section {
-      opacity: 0;
-      transform: translateY(30px);
-      margin-bottom: 3rem;
-      padding: 2rem;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      transition: all 0.5s ease;
-    }
-    
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .section:hover {
-      transform: scale(1.02);
-      background: rgba(255, 255, 255, 0.08);
-    }
-    
     .header {
       text-align: center;
-      margin-bottom: 4rem;
+      padding: 3rem 0;
     }
     
-    .logo {
-      width: 150px;
-      height: 150px;
-      margin: 0 auto;
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    h1 {
+    .header h1 {
       font-size: 3rem;
-      margin: 1rem 0;
-      background: linear-gradient(45deg, #52beff, #ff61ab);
+      margin: 0;
+      background: linear-gradient(120deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
     
-    h2 {
+    .section {
+      background: var(--secondary);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.4s; }
+    .section:nth-child(4) { animation-delay: 0.6s; }
+    
+    .section h2 {
+      color: var(--primary);
       font-size: 1.8rem;
-      color: #52beff;
       margin-bottom: 1.5rem;
+      font-weight: 600;
     }
     
-    .card {
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .info-card {
       background: rgba(255, 255, 255, 0.03);
       padding: 1.5rem;
-      border-radius: 12px;
-      margin-bottom: 1rem;
+      border-radius: 8px;
       transition: all 0.3s ease;
-      animation: glowPulse 2s infinite;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
     
-    .card:hover {
-      transform: translateX(10px);
-      background: rgba(255, 255, 255, 0.06);
+    .info-card:hover {
+      transform: translateY(-5px);
+      animation: subtleGlow 2s infinite;
     }
     
     .highlight {
-      color: #ff61ab;
+      color: var(--accent);
       font-weight: 500;
     }
     
+    .skill-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .skill-list li {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .skill-list li::before {
+      content: "●";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8rem;
+    }
+    
     @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
+      .header h1 {
+        font-size: 2.2rem;
       }
       
-      h1 {
-        font-size: 2rem;
+      .section {
+        padding: 1.5rem;
       }
       
-      h2 {
-        font-size: 1.5rem;
+      .info-grid {
+        grid-template-columns: 1fr;
       }
     }
     </style>
@@ -121,68 +143,77 @@
     <body>
     
     <div class="container">
-      <div class="header">
-        <svg class="logo" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" stroke="#52beff" fill="none" stroke-width="2"/>
-          <text x="50" y="50" text-anchor="middle" fill="#52beff" dominant-baseline="middle" font-size="20">SCP</text>
-          <circle cx="50" cy="50" r="35" stroke="#ff61ab" fill="none" stroke-width="1" opacity="0.5"/>
-        </svg>
-        <h1>Candidature ADS SCP Foundation</h1>
-      </div>
+      <header class="header">
+        <h1>Candidature SCP Foundation</h1>
+      </header>
     
-      <div class="section">
-        <h2>Informations Personnelles</h2>
-        <div class="card">
-          <p><span class="highlight">Nom:</span> Sofiane</p>
-          <p><span class="highlight">Âge:</span> 16 ans</p>
-          <p><span class="highlight">Formation:</span> Lycéen en filière Générale - Spécialité Sciences</p>
-          <p><span class="highlight">Roblox:</span> sofiane22223</p>
-          <p><span class="highlight">Discord:</span> sofianesolar</p>
+      <section class="section">
+        <h2>Profil Personnel</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <p><span class="highlight">Identité:</span> Sofiane</p>
+            <p><span class="highlight">Âge:</span> 16 ans</p>
+            <p><span class="highlight">Études:</span> Filière Générale - Spé Sciences</p>
+          </div>
+          <div class="info-card">
+            <p><span class="highlight">Roblox ID:</span> sofiane22223</p>
+            <p><span class="highlight">Discord:</span> sofianesolar</p>
+            <p><span class="highlight">Expérience RP:</span> 5-6 ans</p>
+          </div>
         </div>
-      </div>
+      </section>
     
-      <div class="section">
-        <h2>Expérience Roleplay</h2>
-        <div class="card">
-          <p>✦ 5-6 ans d'expérience intensive en Roleplay</p>
-          <p>✦ Gestion de départements sur plusieurs sites</p>
-          <p>✦ Titulaire de 2 WL et une en cours</p>
-          <p>✦ Postes: DJI et Superviseur scientifique</p>
-          <p>✦ WL de comité éthique en cours</p>
-          <p>✦ Expérience approfondie en gestion d'escouade et d'unité</p>
+      <section class="section">
+        <h2>Parcours & Accréditations</h2>
+        <div class="info-card">
+          <ul class="skill-list">
+            <li>Détenteur de 2 WhiteList actives</li>
+            <li>WhiteList Comité Éthique en cours</li>
+            <li>Poste de DJI</li>
+            <li>Superviseur Scientifique</li>
+            <li>Gestion de départements multi-sites</li>
+          </ul>
         </div>
-      </div>
+      </section>
     
-      <div class="section">
-        <h2>Points Forts</h2>
-        <div class="card">
-          <p>✦ Connaissances élémentaires solides du domaine</p>
-          <p>✦ Rigueur et professionnalisme exemplaires</p>
-          <p>✦ Gestion maîtrisée des conflits</p>
-          <p>✦ Engagement envers les valeurs de respect et de sérieux</p>
-          <p>✦ Compétences avérées en leadership et organisation</p>
+      <section class="section">
+        <h2>Compétences & Atouts</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <h3 style="color: var(--accent)">Qualités Professionnelles</h3>
+            <ul class="skill-list">
+              <li>Sérieux et rigueur exemplaires</li>
+              <li>Gestion efficace des conflits</li>
+              <li>Leadership d'escouade confirmé</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3 style="color: var(--accent)">Valeurs</h3>
+            <ul class="skill-list">
+              <li>Engagement professionnel fort</li>
+              <li>Respect des protocoles</li>
+              <li>Esprit d'équipe développé</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
     
     <script>
-    const sections = document.querySelectorAll('.section');
-    
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+          }
+        });
+      }, {
+        threshold: 0.1
       });
-    }, observerOptions);
     
-    sections.forEach(section => {
-      observer.observe(section);
+      document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
+      });
     });
     </script>
     
