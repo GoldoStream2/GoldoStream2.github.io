@@ -1,220 +1,180 @@
-<html><head><base href="https://PourSofianeCacaLol.com"><style>
+<!DOCTYPE html><html><head><base href="https://example.com/"><style>
     :root {
-      --primary: #00eaff;
-      --secondary: #202020;
-      --accent: #64ffda;
-      --bg: #0f0f0f;
-      --text: #ffffff;
+      --primary: #005c5c;
+      --secondary: #8b0000;
+      --paper: #f4f1e9;
+      --ink: #1a1a1a;
+      --stamp: rgba(139, 0, 0, 0.15);
     }
     
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
-    @keyframes subtleGlow {
-      0%, 100% {
-        box-shadow: 0 0 20px rgba(0, 234, 255, 0.1);
-      }
-      50% {
-        box-shadow: 0 0 30px rgba(0, 234, 255, 0.2);
-      }
+    @keyframes stampAppear {
+      0% { opacity: 0; transform: rotate(-45deg) scale(0.5); }
+      100% { opacity: 1; transform: rotate(-45deg) scale(1); }
     }
     
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
       padding: 2rem;
+      background: #2c2c2c;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Courier New", monospace;
     }
     
-    .header {
+    .document {
+      background: var(--paper);
+      padding: 4rem;
+      max-width: 800px;
+      position: relative;
+      box-shadow: 0 0 50px rgba(0,0,0,0.3);
+      color: var(--ink);
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .letterhead {
       text-align: center;
-      padding: 3rem 0;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
     }
     
-    .header h1 {
-      font-size: 3rem;
-      margin: 0;
-      background: linear-gradient(120deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 700;
-      letter-spacing: 1px;
+    .scp-logo {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    
+    .classified {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+      padding: 0.5rem 1rem;
+      transform: rotate(-45deg);
+      opacity: 0;
+      animation: stampAppear 0.5s ease-out 1s forwards;
+    }
+    
+    .date {
+      text-align: right;
+      margin: 2rem 0;
+    }
+    
+    .content {
+      line-height: 1.6;
     }
     
     .section {
-      background: var(--secondary);
-      border-radius: 12px;
-      padding: 2rem;
       margin: 2rem 0;
       opacity: 0;
-      animation: fadeIn 0.8s forwards;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      animation: fadeIn 0.5s ease-out forwards;
     }
     
     .section:nth-child(2) { animation-delay: 0.2s; }
     .section:nth-child(3) { animation-delay: 0.4s; }
     .section:nth-child(4) { animation-delay: 0.6s; }
     
-    .section h2 {
+    h2 {
       color: var(--primary);
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
+      border-bottom: 1px solid var(--primary);
+      padding-bottom: 0.5rem;
     }
     
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+    ul {
+      list-style-type: none;
+      padding-left: 1rem;
     }
     
-    .info-card {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 1.5rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    .info-card:hover {
-      transform: translateY(-5px);
-      animation: subtleGlow 2s infinite;
-    }
-    
-    .highlight {
-      color: var(--accent);
-      font-weight: 500;
-    }
-    
-    .skill-list {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .skill-list li {
-      margin: 0.8rem 0;
-      padding-left: 1.5rem;
+    li {
+      margin: 0.5rem 0;
       position: relative;
     }
     
-    .skill-list li::before {
-      content: "●";
-      color: var(--accent);
+    li::before {
+      content: "•";
+      color: var(--primary);
       position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.8rem;
+      left: -1rem;
     }
     
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 2.2rem;
-      }
-      
-      .section {
-        padding: 1.5rem;
-      }
-      
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
+    .footer {
+      margin-top: 4rem;
+      text-align: right;
     }
-    </style>
-    </head>
+    
+    .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      font-size: 8rem;
+      color: var(--stamp);
+      pointer-events: none;
+      opacity: 0.3;
+      font-weight: bold;
+    }
+    </style></head>
     <body>
     
-    <div class="container">
-      <header class="header">
-        <h1>Candidature SCP Foundation</h1>
-      </header>
+    <div class="document">
+      <div class="watermark">SCP FOUNDATION</div>
+      <div class="classified">CLASSIFIED</div>
+      
+      <div class="letterhead">
+        <div class="scp-logo">SCP FOUNDATION</div>
+        <div>SECURE • CONTAIN • PROTECT</div>
+      </div>
     
-      <section class="section">
-        <h2>Profil Personnel</h2>
-        <div class="info-grid">
-          <div class="info-card">
-            <p><span class="highlight">Identité:</span> Sofiane</p>
-            <p><span class="highlight">Âge:</span> 16 ans</p>
-            <p><span class="highlight">Études:</span> Filière Générale - Spé Sciences</p>
-          </div>
-          <div class="info-card">
-            <p><span class="highlight">Roblox ID:</span> sofiane22223</p>
-            <p><span class="highlight">Discord:</span> sofianesolar</p>
-            <p><span class="highlight">Expérience RP:</span> 5-6 ans</p>
-          </div>
+      <div class="date">Date: [REDACTED]</div>
+    
+      <div class="content">
+        <div class="section">
+          <h2>OBJET : Candidature au poste d'Adjoint de Direction de la Sécurité (ADS)</h2>
+          <p>À l'attention du Département des Ressources Humaines de la Fondation SCP,</p>
         </div>
-      </section>
     
-      <section class="section">
-        <h2>Parcours & Accréditations</h2>
-        <div class="info-card">
-          <ul class="skill-list">
-            <li>Détenteur de 2 WhiteList actives</li>
-            <li>WhiteList Comité Éthique en cours</li>
-            <li>Poste de DJI</li>
-            <li>Superviseur Scientifique</li>
-            <li>Gestion de départements multi-sites</li>
+        <div class="section">
+          <h2>INFORMATIONS PERSONNELLES</h2>
+          <ul>
+            <li>Identité : Sofiane</li>
+            <li>Âge : 16 ans</li>
+            <li>Formation : Filière Générale, Spécialité Sciences</li>
+            <li>Identifiant Roblox : sofiane22223</li>
+            <li>Contact Discord : sofianesolar</li>
           </ul>
         </div>
-      </section>
     
-      <section class="section">
-        <h2>Compétences & Atouts</h2>
-        <div class="info-grid">
-          <div class="info-card">
-            <h3 style="color: var(--accent)">Qualités Professionnelles</h3>
-            <ul class="skill-list">
-              <li>Sérieux et rigueur exemplaires</li>
-              <li>Gestion efficace des conflits</li>
-              <li>Leadership d'escouade confirmé</li>
-            </ul>
-          </div>
-          <div class="info-card">
-            <h3 style="color: var(--accent)">Valeurs</h3>
-            <ul class="skill-list">
-              <li>Engagement professionnel fort</li>
-              <li>Respect des protocoles</li>
-              <li>Esprit d'équipe développé</li>
-            </ul>
-          </div>
+        <div class="section">
+          <h2>POINTS FORTS</h2>
+          <ul>
+            <li>Connaissances élémentaires dans le domaine</li>
+            <li>Sérieux et professionnalisme exemplaire</li>
+            <li>Gestion maîtrisée des conflits</li>
+            <li>Rigueur et compétence démontrées</li>
+            <li>5-6 ans d'expérience en RP</li>
+            <li>Capacités avérées en leadership et gestion d'équipe</li>
+          </ul>
         </div>
-      </section>
+    
+        <div class="section">
+          <h2>MOTIVATIONS</h2>
+          <p>Étant professionnel, je m’applique à participer pleinement aux activités des différents départements de la Fondation pour le développement professionnel, afin d’acquérir le plus possible d’expériences, tout en respectant la mission de l’organisation. Étant en relations publiques depuis longtemps, je m’engage fermement dans mes valeurs de respect et de responsabilité, et je pense que ces caractéristiques font de moi un candidat qualifié pour ce poste.</p>
+        </div>
+    
+        <div class="footer">
+          <p>Signature : _____________________</p>
+          <p>Classification : NIVEAU 3</p>
+        </div>
+      </div>
     </div>
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-    
-      document.querySelectorAll('.section').forEach(section => {
-        observer.observe(section);
-      });
-    });
-    </script>
     
     </body></html>
