@@ -1,0 +1,189 @@
+<html><head><base href="https://PourSofianeCacaLol.com">
+    <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(82, 190, 255, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(82, 190, 255, 0.5); }
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(-45deg, #1a1a2e, #16213e, #1a1a2e, #0f3460);
+      background-size: 400% 400%;
+      animation: gradientFlow 15s ease infinite;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .section {
+      opacity: 0;
+      transform: translateY(30px);
+      margin-bottom: 3rem;
+      padding: 2rem;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      transition: all 0.5s ease;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section:hover {
+      transform: scale(1.02);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .logo {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin: 1rem 0;
+      background: linear-gradient(45deg, #52beff, #ff61ab);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      color: #52beff;
+      margin-bottom: 1.5rem;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+      animation: glowPulse 2s infinite;
+    }
+    
+    .card:hover {
+      transform: translateX(10px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    
+    .highlight {
+      color: #ff61ab;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+    </style>
+    </head>
+    <body>
+    
+    <div class="container">
+      <div class="header">
+        <svg class="logo" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" stroke="#52beff" fill="none" stroke-width="2"/>
+          <text x="50" y="50" text-anchor="middle" fill="#52beff" dominant-baseline="middle" font-size="20">SCP</text>
+          <circle cx="50" cy="50" r="35" stroke="#ff61ab" fill="none" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <h1>Candidature ADS SCP Foundation</h1>
+      </div>
+    
+      <div class="section">
+        <h2>Informations Personnelles</h2>
+        <div class="card">
+          <p><span class="highlight">Nom:</span> Sofiane</p>
+          <p><span class="highlight">Âge:</span> 16 ans</p>
+          <p><span class="highlight">Formation:</span> Lycéen en filière Générale - Spécialité Sciences</p>
+          <p><span class="highlight">Roblox:</span> sofiane22223</p>
+          <p><span class="highlight">Discord:</span> sofianesolar</p>
+        </div>
+      </div>
+    
+      <div class="section">
+        <h2>Expérience Roleplay</h2>
+        <div class="card">
+          <p>✦ 5-6 ans d'expérience intensive en Roleplay</p>
+          <p>✦ Gestion de départements sur plusieurs sites</p>
+          <p>✦ Titulaire de 2 WL et une en cours</p>
+          <p>✦ Postes: DJI et Superviseur scientifique</p>
+          <p>✦ WL de comité éthique en cours</p>
+          <p>✦ Expérience approfondie en gestion d'escouade et d'unité</p>
+        </div>
+      </div>
+    
+      <div class="section">
+        <h2>Points Forts</h2>
+        <div class="card">
+          <p>✦ Connaissances élémentaires solides du domaine</p>
+          <p>✦ Rigueur et professionnalisme exemplaires</p>
+          <p>✦ Gestion maîtrisée des conflits</p>
+          <p>✦ Engagement envers les valeurs de respect et de sérieux</p>
+          <p>✦ Compétences avérées en leadership et organisation</p>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+    const sections = document.querySelectorAll('.section');
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+    </script>
+    
+    </body></html>
