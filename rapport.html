@@ -1,4 +1,4 @@
-<html><head><base href="https://example.com">
+<html><head><base href="https://goldostream2.github.io">
   <style>
   :root {
     --primary: #005c5c;
@@ -40,16 +40,20 @@
   }
   
   .letterhead {
-    text-align: center;
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 2rem;
+    display: flex;
+    align-items: center;
     margin-bottom: 2rem;
   }
   
   .scp-logo {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 20px;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+  
+  .header-content {
+    flex-grow: 1;
+    text-align: center;
   }
   
   .classified {
@@ -124,11 +128,6 @@
     font-family: Arial, sans-serif;
   }
   
-  .header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
   .header h1 {
     margin: 1rem 0;
     color: var(--primary);
@@ -138,14 +137,16 @@
   <body>
   <div class="document">
       <div class="watermark">SCP FOUNDATION</div>
-      <div class="header">
+      <div class="letterhead">
           <svg class="scp-logo" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="45" fill="none" stroke="#000" stroke-width="2"/>
               <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20">SCP</text>
               <text x="50%" y="65%" text-anchor="middle" font-family="Arial" font-size="8">SECURE • CONTAIN • PROTECT</text>
           </svg>
-          <h1>RAPPORT D'INCIDENT OFFICIEL</h1>
-          <p>CLASSIFICATION : CONFIDENTIEL</p>
+          <div class="header-content">
+              <h1>RAPPORT D'INCIDENT OFFICIEL</h1>
+              <p>CLASSIFICATION : CONFIDENTIEL</p>
+          </div>
       </div>
   
       <div class="metadata">
