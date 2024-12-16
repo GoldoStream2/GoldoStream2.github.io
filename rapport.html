@@ -1,170 +1,181 @@
 <html><head><base href="https://example.com">
-<style>
-:root {
-  --primary: #005c5c;
-  --secondary: #8b0000;
-  --paper: #f4f1e9;
-  --ink: #1a1a1a;
-  --stamp: rgba(139, 0, 0, 0.15);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes stampAppear {
-  0% { opacity: 0; transform: rotate(-45deg) scale(0.5); }
-  100% { opacity: 1; transform: rotate(-45deg) scale(1); }
-}
-
-body {
-  margin: 0;
-  padding: 2rem;
-  background: #2c2c2c;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Courier New", monospace;
-}
-
-.document {
-  background: var(--paper);
-  padding: 4rem;
-  max-width: 800px;
-  position: relative;
-  box-shadow: 0 0 50px rgba(0,0,0,0.3);
-  color: var(--ink);
-  animation: fadeIn 1s ease-out;
-}
-
-.letterhead {
-  text-align: center;
-  border-bottom: 2px solid var(--ink);
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
-}
-
-.scp-logo {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 20px;
-}
-
-.classified {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  font-size: 1.2rem;
-  color: var(--secondary);
-  border: 2px solid var(--secondary);
-  padding: 0.5rem 1rem;
-  transform: rotate(-15deg);
-  opacity: 1;
-  animation: stampAppear 0.5s ease-out forwards;
-}
-
-.metadata {
-  margin: 2rem 0;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 0.2s forwards;
-}
-
-.metadata p {
-  margin: 5px 0;
-}
-
-.content {
-  line-height: 1.6;
-}
-
-.section {
-  margin: 2rem 0;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-.section:nth-child(2) { animation-delay: 0.2s; }
-.section:nth-child(3) { animation-delay: 0.4s; }
-.section:nth-child(4) { animation-delay: 0.6s; }
-
-.section-title {
-  color: var(--primary);
-  font-weight: bold;
-  border-bottom: 1px solid var(--primary);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.events {
-  padding-left: 20px;
-}
-
-.events li {
-  margin-bottom: 10px;
-}
-
-.footer {
-  margin-top: 4rem;
-  text-align: right;
-}
-
-.watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  font-size: 120px;
-  color: var(--stamp);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-}
-</style>
-</head>
-<body>
-<div class="document">
-    <div class="watermark">SCP FOUNDATION</div>
-    <div class="header">
-        <svg class="scp-logo" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="#000" stroke-width="2"/>
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20">SCP</text>
-        </svg>
-        <h1>RAPPORT D'INCIDENT OFFICIEL</h1>
-        <p>CLASSIFICATION : CONFIDENTIEL</p>
-    </div>
-
-    <div class="metadata">
-        <p><strong>Objet :</strong> Justification des actions prises lors du reconfinement de SCP-096</p>
-        <p><strong>Rédigé par :</strong> [A.I.T] - Aboubacar</p>
-        <p><strong>Date :</strong> 15/12/24</p>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Contexte de l'incident :</div>
-        <p>Lors de la tentative de reconfinement de SCP-096, des ingénieurs ont accédé à la Low Containment Zone (LCZ) et, plus précisément, à la salle de commande de SCP-096 sans autorisation ni communication préalable. Leur comportement a directement compromis le protocole de sécurité en place, mettant en danger le processus de reconfinement et la sécurité globale.</p>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Déroulé des événements :</div>
-        <ol class="events">
-            <li>Déclenchement de l'alarme : SCP-096 s'étant déconfiné, une opération de lockdown a été activée pour contenir la menace et permettre à l'équipe de sécurité et aux marshals de se préparer à la capture de l'anomalie.</li>
-            <li>Directive donnée aux ingénieurs : Avant de nous rendre sur le site de reconfinement, nous avons aperçu des ingénieurs présents dans la zone. Ces derniers ont été formellement avertis de ne pas entrer dans la LCZ et de respecter le protocole de lockdown.</li>
-            <li>Violation du lockdown : Malgré ces avertissements, les ingénieurs ont délibérément ouvert la lockdown et accédé à la salle de commande de SCP-096. Aucune prévention ou demande d'accès ne nous a été communiquée.</li>
-            <li>Comportement suspect : Les ingénieurs ont également sorti des dispositifs de type SCRAMBLE de manière inexpliquée, sans que leur protocole ne mentionne une quelconque compétence ou autorisation liée au reconfinement d'anomalies comme SCP-096.</li>
-            <li>Somations et refus d'obtempérer : Une fois dans la salle de commande, les ingénieurs ont été sommés trois fois de quitter la zone immédiatement. Malgré ces injonctions claires, ils ont refusé d'obtempérer.</li>
-            <li>Action prise : Face à leur refus d'obtempérer et à l'absence d'intention claire ou justifiée de leur présence, j'ai estimé qu'ils représentaient une menace potentielle au processus de reconfinement de SCP-096. J'ai donc ouvert le feu pour neutraliser la menace.</li>
-        </ol>
-    </div>
-
-    <div class="footer">
-        <p>Signature : _______________________</p>
-        <p>Date : 15/12/24</p>
-    </div>
-
-    <div class="classified">CONFIDENTIEL</div>
-</div>
-</body></html>
+  <style>
+  :root {
+    --primary: #005c5c;
+    --secondary: #8b0000;
+    --paper: #f4f1e9;
+    --ink: #1a1a1a;
+    --stamp: rgba(139, 0, 0, 0.15);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes stampAppear {
+    0% { opacity: 0; transform: rotate(-45deg) scale(0.5); }
+    100% { opacity: 1; transform: rotate(-45deg) scale(1); }
+  }
+  
+  body {
+    margin: 0;
+    padding: 2rem;
+    background: #2c2c2c;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Courier New", monospace;
+  }
+  
+  .document {
+    background: var(--paper);
+    padding: 4rem;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.3);
+    color: var(--ink);
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .letterhead {
+    text-align: center;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .scp-logo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+  }
+  
+  .classified {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.2rem;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    padding: 0.5rem 1rem;
+    transform: rotate(-15deg);
+    opacity: 1;
+    animation: stampAppear 0.5s ease-out forwards;
+  }
+  
+  .metadata {
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 0.2s forwards;
+  }
+  
+  .metadata p {
+    margin: 5px 0;
+  }
+  
+  .content {
+    line-height: 1.6;
+  }
+  
+  .section {
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .section:nth-child(2) { animation-delay: 0.2s; }
+  .section:nth-child(3) { animation-delay: 0.4s; }
+  .section:nth-child(4) { animation-delay: 0.6s; }
+  
+  .section-title {
+    color: var(--primary);
+    font-weight: bold;
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .events {
+    padding-left: 20px;
+  }
+  
+  .events li {
+    margin-bottom: 10px;
+  }
+  
+  .footer {
+    margin-top: 4rem;
+    text-align: right;
+  }
+  
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 120px;
+    color: var(--stamp);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    margin: 1rem 0;
+    color: var(--primary);
+  }
+  </style>
+  </head>
+  <body>
+  <div class="document">
+      <div class="watermark">SCP FOUNDATION</div>
+      <div class="header">
+          <svg class="scp-logo" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#000" stroke-width="2"/>
+              <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20">SCP</text>
+              <text x="50%" y="65%" text-anchor="middle" font-family="Arial" font-size="8">SECURE • CONTAIN • PROTECT</text>
+          </svg>
+          <h1>RAPPORT D'INCIDENT OFFICIEL</h1>
+          <p>CLASSIFICATION : CONFIDENTIEL</p>
+      </div>
+  
+      <div class="metadata">
+          <p><strong>Objet :</strong> Justification des actions prises lors du reconfinement de SCP-096</p>
+          <p><strong>Rédigé par :</strong> [A.I.T] - Aboubacar</p>
+          <p><strong>Date :</strong> 15/12/24</p>
+      </div>
+  
+      <div class="section">
+          <div class="section-title">Contexte de l'incident :</div>
+          <p>Lors de la tentative de reconfinement de SCP-096, des ingénieurs ont accédé à la Low Containment Zone (LCZ) et, plus précisément, à la salle de commande de SCP-096 sans autorisation ni communication préalable. Leur comportement a directement compromis le protocole de sécurité en place, mettant en danger le processus de reconfinement et la sécurité globale.</p>
+      </div>
+  
+      <div class="section">
+          <div class="section-title">Déroulé des événements :</div>
+          <ol class="events">
+              <li>Déclenchement de l'alarme : SCP-096 s'étant déconfiné, une opération de lockdown a été activée pour contenir la menace et permettre à l'équipe de sécurité et aux marshals de se préparer à la capture de l'anomalie.</li>
+              <li>Directive donnée aux ingénieurs : Avant de nous rendre sur le site de reconfinement, nous avons aperçu des ingénieurs présents dans la zone. Ces derniers ont été formellement avertis de ne pas entrer dans la LCZ et de respecter le protocole de lockdown.</li>
+              <li>Violation du lockdown : Malgré ces avertissements, les ingénieurs ont délibérément ouvert la lockdown et accédé à la salle de commande de SCP-096. Aucune prévention ou demande d'accès ne nous a été communiquée.</li>
+              <li>Comportement suspect : Les ingénieurs ont également sorti des dispositifs de type SCRAMBLE de manière inexpliquée, sans que leur protocole ne mentionne une quelconque compétence ou autorisation liée au reconfinement d'anomalies comme SCP-096.</li>
+              <li>Somations et refus d'obtempérer : Une fois dans la salle de commande, les ingénieurs ont été sommés trois fois de quitter la zone immédiatement. Malgré ces injonctions claires, ils ont refusé d'obtempérer. L'un des ingénieurs a explicitement répondu "Non", manifestant une insubordination flagrante. De plus, un ingénieur a prétendu être un "spécialiste du reconfinement", bien que cette affirmation ne soit fondée sur aucun élément présent dans leur protocole.</li>
+              <li>Action prise : Face à leur refus d'obtempérer et à l'absence d'intention claire ou justifiée de leur présence, j'ai estimé qu'ils représentaient une menace potentielle au processus de reconfinement de SCP-096. J'ai donc ouvert le feu pour neutraliser la menace.</li>
+          </ol>
+      </div>
+  
+      <div class="footer">
+          <p>Signature : _______________________</p>
+          <p>Date : 15/12/24</p>
+      </div>
+  
+      <div class="classified">CONFIDENTIEL</div>
+  </div>
+  </body></html>
